@@ -37,7 +37,6 @@ class BuildDataWithWord2Vec(PrepareWordVector):
         self.texts = prepare_inst.recursive_find_all_text(prepare_inst.mp_based_the_clean_engine_core())
         self.EMBED_SIZE = 128
 
-
     @staticmethod
     def flatten_sublists(lst):
         # flatten = lambda l: [item for sublist in l for item in sublist] , not suggested to value a lambda

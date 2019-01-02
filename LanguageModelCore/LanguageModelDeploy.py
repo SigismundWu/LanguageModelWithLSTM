@@ -40,9 +40,9 @@ class LanguageModelDeploy(object):
         self.regex_patterns = RegexPattern
         self.word_to_index_parameters_set = self.build_with_word2vec.word_to_index()
         self.vocab = self.word_to_index_parameters_set[1]
-
         self.pretrained_weight = self.build_with_word2vec.pretrained_weight()
         self.drop_rate = 0.3
+
 
     def deploy_language_model(self):
         # the
@@ -54,12 +54,26 @@ class LanguageModelDeploy(object):
 
         return model
 
+    def train_the_LSTM_model(self):
+        model_stand_by = self.deploy_language_model()
+        model_ready = LanguageModelPackaging(model_stand_by, self.word_to_index_parameters_set)
+        model_ready.train_the_model()
+        torch.save(model_ready, '../configs/trained_model/trained_model.pth')
+
+        return model_ready
+
+    def predict_the_probability(self, model_trained=None):
+        if model_trained is None:
+            print("train a new model and use it")
+            model_ready = self.train_the_LSTM_model()
+        else:
+            print("using a trained model")
+            model_ready = torch.load(model_trained)
+        result = model_ready.predict_the_probability()
+
+        return result
 
 if __name__ == "__main__":
-    device = torch.device("cuda: 0” if torch.cuda.is_available() else “cpu")
-    instance = LanguageModelDeploy()
-    model = instance.deploy_language_model()
-    prediction_tool = LanguageModelPackaging(model)
-    prediction_tool.train_the_model()
-    prob = prediction_tool.predict_the_probability()
+    model_ready = LanguageModelDeploy()
+    prob = model_ready.predict_the_probability("../configs/trained_model/trained_model.pth")
     print(prob)

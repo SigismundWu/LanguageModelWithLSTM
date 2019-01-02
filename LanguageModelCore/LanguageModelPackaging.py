@@ -24,10 +24,11 @@ from PreProcessing.DataCleanComponents import DataCleanComponents
 from PreProcessing.RegexPattern import RegexPattern
 from LanguageModelCore.PrepareWordVector import PrepareWordVector
 from LanguageModelCore.BuildDataWithWord2Vec import BuildDataWithWord2Vec
+from PreProcessing.BuildValidateData import BuildValidateData
 
 
 class LanguageModelPackaging(object):
-    def __init__(self, model):
+    def __init__(self, model, word_to_index_parameters_set):
         pd.set_option('max_row', 1500)
         random.seed(0)
         torch.manual_seed(0)
@@ -46,8 +47,7 @@ class LanguageModelPackaging(object):
         self.build_with_word2vec = BuildDataWithWord2Vec()
         self.pre_clean = PrepareWordVector()
         self.regex_patterns = RegexPattern
-        self.word_to_index_parameters_set = self.build_with_word2vec.word_to_index()
-        self.vocab = self.word_to_index_parameters_set[1]
+        self.word_to_index_parameters_set = word_to_index_parameters_set
 
     def get_lstm_rnn_parameters(self):
         self.model.init_weight()
@@ -100,8 +100,11 @@ class LanguageModelPackaging(object):
                 # update the param
                 self.RESCHEDULED = True
 
+        return self.model
+
     def prediction_preparation(self):
-        sentences = DataToValidate.sentences
+        validate_data_instance = BuildValidateData()
+        sentences = validate_data_instance.read_data()
         sentences_clean = []
         for itm in sentences:
             itm = self.pre_clean.pre_data_clean(itm, self.regex_patterns.re_first)

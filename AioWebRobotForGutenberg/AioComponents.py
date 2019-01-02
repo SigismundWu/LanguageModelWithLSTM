@@ -7,7 +7,7 @@ import aiohttp
 from urllib import parse
 from bs4 import BeautifulSoup
 
-import aiofile
+import aiofiles
 
 
 class AioComponents(object):
@@ -156,10 +156,10 @@ class AioComponents(object):
                     # set the path to storage the data, like: ../data/gutenburg/
                     # storage_path = "../Data/gutenburg/"
                     storage_path = self.storage_path
-                    async with aiofile.AIOFile(
+                    async with aiofiles.AIOFile(
                             "".join([storage_path, item.split("/")[-1].split(".")[0], ".txt"]), 'w'
                     ) as afp:
-                        writer = aiofile.Writer(afp)
+                        writer = aiofiles.Writer(afp)
                         # reader = Reader(afp, chunk_size=8)
                         result = await response.text()
                         await writer(self._get_story(result))
