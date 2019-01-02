@@ -24,6 +24,7 @@ from LanguageModelCore.LanguageModelTorch import LanguageModelTorch
 from LanguageModelCore.BuildDataWithWord2Vec import BuildDataWithWord2Vec
 from LanguageModelCore.PrepareWordVector import PrepareWordVector
 
+
 class LanguageModelDeploy(object):
     def __init__(self):
         self.EMBED_SIZE = 128

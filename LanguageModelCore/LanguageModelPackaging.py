@@ -121,15 +121,14 @@ class LanguageModelPackaging(object):
         for itm in sentences_proc:
             position.append(itm.split().index('.') - 1)
 
-        return sentences_clean, sentences_proc, position
+        return sentences_proc, position
 
     def predict_the_probability(self):
         continue_prob = 0.0
         # predict the probability between the words in sentences
         sentences_param_set = self.prediction_preparation()
-        sentences_clean = sentences_param_set[0]
-        sentences_proc = sentences_param_set[1]
-        position = sentences_param_set[2]
+        sentences_proc = sentences_param_set[0]
+        position = sentences_param_set[1]
         word2index = self.word_to_index_parameters_set[1]
         for k, itm in enumerate(sentences_proc):
             print(itm.replace('.', ''))
