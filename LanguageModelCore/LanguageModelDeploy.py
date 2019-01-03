@@ -8,6 +8,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 import nltk
 import random
+import pandas as pd
 import numpy as np
 import nltk
 import math
@@ -53,7 +54,7 @@ class LanguageModelDeploy(object):
 
         return model
 
-    def train_the_LSTM_model(self):
+    def train_the_lstm_model(self):
         model_stand_by = self.deploy_language_model()
         model_ready = LanguageModelPackaging(model_stand_by, self.word_to_index_parameters_set)
         model_ready.train_the_model()
@@ -66,16 +67,21 @@ class LanguageModelDeploy(object):
     def predict_the_probability(self, model_trained=None):
         if model_trained is None:
             print("train a new model and use it")
-            model_ready = self.train_the_LSTM_model()
+            model_ready = self.train_the_lstm_model()
         else:
             print("using a trained model")
             model_ready = torch.load(model_trained)
-        result = model_ready.predict_the_probability()
+
+        result = model_ready.prediction_final_assemble()
 
         return result
 
 
 if __name__ == "__main__":
     model_ready = LanguageModelDeploy()
-    prob = model_ready.predict_the_probability()
-    print(prob)
+    nest_list = model_ready.predict_the_probability('../configs/trained_model/trained_model.pth')
+    print(nest_list)
+    final_data_frame = pd.DataFrame(nest_list)
+    final_data_frame = final_data_frame.sort_values(by=2, ascending=True)
+    print(final_data_frame)
+    print(final_data_frame[1][0])

@@ -9,7 +9,6 @@ import torch.nn.functional as F
 import nltk
 import random
 import numpy as np
-import nltk
 import math
 import string
 import re
@@ -125,21 +124,23 @@ class LanguageModelPackaging(object):
         for itm in sentences_proc:
             position.append(itm.split().index('.') - 1)
 
-        return sentences_proc, position
+        return sentences, sentences_proc, position
 
-    def predict_the_probability(self):
-        continue_prob = 0.0
+    def predict_the_probability(self, sentences_param_set):
         # predict the probability between the words in sentences
-        sentences_param_set = self.prediction_preparation()
-        sentences_proc = sentences_param_set[0]
-        position = sentences_param_set[1]
+        sentences_proc = sentences_param_set[1]
+        position = sentences_param_set[2]
         word2index = self.word_to_index_parameters_set[1]
+        # [[sentence, mean_prob], [sentence, mean_prob], ...]
+        list_in_nest_for_prob = list()
         for k, itm in enumerate(sentences_proc):
+            cache_list = list()
+            # the origin
             print(itm.replace('.', ''))
-
+            print(itm)
             test_data, _ = self.build_with_word2vec.prepare_ptb_dataset(itm, word2index)
             test_data = self.build_with_word2vec.batchify(test_data, self.BATCH_SIZE // self.BATCH_SIZE)
-
+            cache_list.append(itm.replace('.', ''))
             total_loss = 0
             hidden = self.model.init_hidden(self.BATCH_SIZE // self.BATCH_SIZE)
             for i, batch in enumerate(self.build_with_word2vec.get_batch(test_data, self.SEQ_LENGTH)):
@@ -149,6 +150,7 @@ class LanguageModelPackaging(object):
                 preds, hidden = self.model(inputs, hidden)
 
                 continue_prob = 0
+                total_prob = list()
                 for i in range(self.SEQ_LENGTH):
                     if i < position[k]:
                         y_prob = preds.data[i].cpu().numpy()
@@ -160,7 +162,22 @@ class LanguageModelPackaging(object):
                         res = dict(list(zip(list(y_index), list(y_prob))))
                         next_word_prob = math.log(res[int(targets[0][i].data)], 10)
                         print(next_word_prob)
+                        total_prob.append(next_word_prob)
                         continue_prob += next_word_prob
-                print('total_continue_prob:', continue_prob)
+                        print('total_continue_prob:', continue_prob)
+                    minimum_prob_of_continue_prob = min(total_prob)
+                    each_mean_continue_prob = np.mean(total_prob)
+                # append it, will always has has a mean prob, a minimum_prob
+                cache_list.append(each_mean_continue_prob)
+                cache_list.append(minimum_prob_of_continue_prob)
+            list_in_nest_for_prob.append(cache_list)
 
-        return
+        return list_in_nest_for_prob
+
+    def prediction_final_assemble(self):
+        param_set = self.prediction_preparation()
+        list_in_nest = self.predict_the_probability(param_set)
+        for index in range(len(list_in_nest)):
+            list_in_nest[index].insert(0, param_set[0][index])
+
+        return list_in_nest

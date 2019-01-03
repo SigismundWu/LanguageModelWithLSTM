@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import re
 
+
 class BuildValidateData(object):
     def __init__(self):
         self.path = "../Data/ALO7/alo7qtp.txt"

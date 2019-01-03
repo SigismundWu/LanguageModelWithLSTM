@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fbf5a6b-4e33-4b24-91e8-db75fff82e56" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/LanguageModelWithLSTM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LanguageModelWithLSTM.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LanguageModelCore/NltkPhoneticCal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/DataToValidate/DataToValidate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/DataToValidate/DataToValidate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LanguageModelCore/BuildDataWithWord2Vec.py" beforeDir="false" afterPath="$PROJECT_DIR$/LanguageModelCore/BuildDataWithWord2Vec.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LanguageModelCore/LanguageModelDeploy.py" beforeDir="false" afterPath="$PROJECT_DIR$/LanguageModelCore/LanguageModelDeploy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LanguageModelCore/LanguageModelPackaging.py" beforeDir="false" afterPath="$PROJECT_DIR$/LanguageModelCore/LanguageModelPackaging.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LanguageModelCore/PrepareWordVector.py" beforeDir="false" afterPath="$PROJECT_DIR$/LanguageModelCore/PrepareWordVector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PreProcessing/BuildValidateData.py" beforeDir="false" afterPath="$PROJECT_DIR$/PreProcessing/BuildValidateData.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configs/LanguageModelParameters/pretrained_weight.csv" beforeDir="false" afterPath="$PROJECT_DIR$/configs/LanguageModelParameters/pretrained_weight.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configs/LanguageModelParameters/word2index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/configs/LanguageModelParameters/word2index.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/trained_model/trained_model.pth" beforeDir="false" afterPath="$PROJECT_DIR$/configs/trained_model/trained_model_with_cuda.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/trained_model/trained_model.pth" beforeDir="false" afterPath="$PROJECT_DIR$/configs/trained_model/trained_model.pth" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LanguageModelDeploy.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LanguageModelDeploy.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LanguageModelCore/LanguageModelDeploy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+            <state relative-caret-position="247">
+              <caret line="74" column="56" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
               <folding>
                 <element signature="e#23#37#0" expanded="true" />
               </folding>
@@ -36,11 +33,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setup.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setup.py">
+      <file leaf-file-name="NltkPhoneticCal.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LanguageModelCore/NltkPhoneticCal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+            <state relative-caret-position="-1590">
+              <caret line="123" column="38" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
+              <folding>
+                <element signature="e#24#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,8 +48,8 @@
       <file leaf-file-name="LanguageModelPackaging.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LanguageModelCore/LanguageModelPackaging.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="107" column="40" lean-forward="true" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+            <state relative-caret-position="1503">
+              <caret line="179" column="46" selection-start-line="179" selection-start-column="46" selection-end-line="179" selection-end-column="46" />
               <folding>
                 <element signature="e#23#37#0" expanded="true" />
               </folding>
@@ -57,32 +57,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuildDataWithWord2Vec.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LanguageModelCore/BuildDataWithWord2Vec.py">
+      <file leaf-file-name="DataCleanEngineMp.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PreProcessing/DataCleanEngineMp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="125" selection-start-line="125" selection-end-line="125" />
+            <state relative-caret-position="396">
+              <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegexPattern.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PreProcessing/RegexPattern.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="LanguageModelTorch.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LanguageModelCore/LanguageModelTorch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
+            <state relative-caret-position="-221">
               <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#23#67#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrepareWordVector.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LanguageModelCore/PrepareWordVector.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -96,16 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="word2index.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/configs/LanguageModelParameters/word2index.csv">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="DataToValidate.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Data/DataToValidate/DataToValidate.py">
+      <file leaf-file-name="PrepareWordVector.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LanguageModelCore/PrepareWordVector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+            <state relative-caret-position="-5">
+              <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -113,10 +104,15 @@
       <file leaf-file-name="BuildValidateData.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PreProcessing/BuildValidateData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="108">
+              <caret line="6" column="45" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="45" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data/DataToValidate/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -132,6 +128,7 @@
     <findStrings>
       <find>alo7</find>
       <find>read</find>
+      <find>extend</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -142,12 +139,14 @@
       <list>
         <option value="$PROJECT_DIR$/AioWebRobotForGutenberg/AioComponents.py" />
         <option value="$PROJECT_DIR$/the_test_use.py" />
-        <option value="$PROJECT_DIR$/PreProcessing/BuildValidateData.py" />
         <option value="$PROJECT_DIR$/LanguageModelCore/BuildDataWithWord2Vec.py" />
         <option value="$PROJECT_DIR$/LanguageModelCore/PrepareWordVector.py" />
         <option value="$PROJECT_DIR$/Data/DataToValidate/DataToValidate.py" />
         <option value="$PROJECT_DIR$/LanguageModelCore/LanguageModelDeploy.py" />
+        <option value="$PROJECT_DIR$/LanguageModelCore/NltkPhoneicCal.py" />
         <option value="$PROJECT_DIR$/LanguageModelCore/LanguageModelPackaging.py" />
+        <option value="$PROJECT_DIR$/PreProcessing/BuildValidateData.py" />
+        <option value="$PROJECT_DIR$/LanguageModelCore/NltkPhoneticCal.py" />
       </list>
     </option>
   </component>
@@ -209,12 +208,6 @@
               <item name="LanguageModelWithLSTM" type="b2602c69:ProjectViewProjectNode" />
               <item name="LanguageModelWithLSTM" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
-              <item name="ALO7" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LanguageModelWithLSTM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LanguageModelWithLSTM" type="462c0819:PsiDirectoryNode" />
-              <item name="Data" type="462c0819:PsiDirectoryNode" />
               <item name="DataToValidate" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -255,7 +248,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.LanguageModelDeploy">
+  <component name="RunManager" selected="Python.NltkPhoneticCal">
     <configuration name="BuildValidateData" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="LanguageModelWithLSTM" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -292,6 +285,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="NltkPhoneticCal" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="LanguageModelWithLSTM" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/LanguageModelCore" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LanguageModelCore/NltkPhoneticCal.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="the_test_use" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="LanguageModelWithLSTM" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -314,9 +325,11 @@
       <item itemvalue="Python.BuildValidateData" />
       <item itemvalue="Python.LanguageModelDeploy" />
       <item itemvalue="Python.the_test_use" />
+      <item itemvalue="Python.NltkPhoneticCal" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.NltkPhoneticCal" />
         <item itemvalue="Python.LanguageModelDeploy" />
         <item itemvalue="Python.BuildValidateData" />
         <item itemvalue="Python.the_test_use" />
@@ -489,31 +502,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PreProcessing/DataCleanEngineMp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PreProcessing/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/gensim/utils.py" />
-    <entry file="file://$PROJECT_DIR$/PreProcessing/BuildValidateData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PreProcessing/DataCleanComponents.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/configs/LanguageModelParameters/word2index.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -524,13 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LanguageModelCore/PrepareWordVector.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LanguageModelCore/BuildDataWithWord2Vec.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="768">
@@ -538,9 +523,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Data/DataToValidate/DataToValidate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-41">
+          <caret line="22" column="66" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/DataToValidate/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LanguageModelCore/PrepareWordVector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/LanguageModelCore/LanguageModelTorch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
+        <state relative-caret-position="-221">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#23#67#0" expanded="true" />
@@ -548,29 +550,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/DataToValidate/DataToValidate.py">
+    <entry file="file://$PROJECT_DIR$/LanguageModelCore/LanguageModelDeploy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="15" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LanguageModelCore/LanguageModelPackaging.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="107" column="40" lean-forward="true" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+        <state relative-caret-position="247">
+          <caret line="74" column="56" selection-start-line="74" selection-start-column="56" selection-end-line="74" selection-end-column="56" />
           <folding>
             <element signature="e#23#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LanguageModelCore/LanguageModelDeploy.py">
+    <entry file="file://$PROJECT_DIR$/LanguageModelCore/LanguageModelPackaging.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+        <state relative-caret-position="1503">
+          <caret line="179" column="46" selection-start-line="179" selection-start-column="46" selection-end-line="179" selection-end-column="46" />
           <folding>
             <element signature="e#23#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PreProcessing/DataCleanEngineMp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PreProcessing/RegexPattern.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PreProcessing/DataCleanComponents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PreProcessing/BuildValidateData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="45" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LanguageModelCore/NltkPhoneticCal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1590">
+          <caret line="123" column="38" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
+          <folding>
+            <element signature="e#24#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
