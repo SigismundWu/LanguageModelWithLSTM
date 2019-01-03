@@ -16,7 +16,6 @@ class PrepareWordVector(DataCleanEngineMp):
         # configuration for the gensim to train the word vector
         self.EMBED_SIZE = 128
 
-
     def recursive_find_all_text(self, lst_in_depth):
         if not isinstance(lst_in_depth[0], str):
             for lists in lst_in_depth:

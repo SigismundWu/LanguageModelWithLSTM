@@ -123,9 +123,3 @@ class BuildDataWithWord2Vec(PrepareWordVector):
         df_pretrained_weight.to_csv(self.path + 'pretrained_weight.csv', index=False)
 
         return pretrained_weight
-
-
-if __name__ == "__main__":
-    inst = BuildDataWithWord2Vec()
-    print(inst.word_to_index()[0])
-    print(len(inst.word_to_index()[1]))

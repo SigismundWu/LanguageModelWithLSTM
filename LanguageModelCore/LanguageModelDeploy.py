@@ -43,7 +43,6 @@ class LanguageModelDeploy(object):
         self.pretrained_weight = self.build_with_word2vec.pretrained_weight()
         self.drop_rate = 0.3
 
-
     def deploy_language_model(self):
         # the
         print(self.vocab)
@@ -58,6 +57,8 @@ class LanguageModelDeploy(object):
         model_stand_by = self.deploy_language_model()
         model_ready = LanguageModelPackaging(model_stand_by, self.word_to_index_parameters_set)
         model_ready.train_the_model()
+        # if trained with cuda, save it with a name with cuda, else, without cuda, common version
+        # torch.save(model_ready, '../configs/trained_model/trained_model_with_cuda.pth')
         torch.save(model_ready, '../configs/trained_model/trained_model.pth')
 
         return model_ready
@@ -73,7 +74,8 @@ class LanguageModelDeploy(object):
 
         return result
 
+
 if __name__ == "__main__":
     model_ready = LanguageModelDeploy()
-    prob = model_ready.predict_the_probability("../configs/trained_model/trained_model.pth")
+    prob = model_ready.predict_the_probability()
     print(prob)

@@ -103,8 +103,9 @@ class LanguageModelPackaging(object):
         return self.model
 
     def prediction_preparation(self):
-        validate_data_instance = BuildValidateData()
-        sentences = validate_data_instance.read_data()
+        # validate_data_instance = BuildValidateData()
+        # sentences = validate_data_instance.read_data()
+        sentences = DataToValidate.sentences
         sentences_clean = []
         for itm in sentences:
             itm = self.pre_clean.pre_data_clean(itm, self.regex_patterns.re_first)
@@ -162,4 +163,4 @@ class LanguageModelPackaging(object):
                         continue_prob += next_word_prob
                 print('total_continue_prob:', continue_prob)
 
-        return continue_prob
+        return
