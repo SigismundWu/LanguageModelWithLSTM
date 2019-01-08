@@ -7,7 +7,7 @@ import aiohttp
 from urllib import parse
 from bs4 import BeautifulSoup
 
-import aiofiles
+import aiofile
 
 
 class AioComponents(object):
@@ -18,7 +18,7 @@ class AioComponents(object):
             'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
         }
         # Depends on which kind of first-letter-urls you want to download
-        self.download_list = ["a"]
+        self.download_list = ["a", "b"]
         self.sub_urls_pattern = 'ebooks.*\d{3,9}.*\.html'
         self.storage_path = "../Data/gutenburg/"
 
@@ -91,7 +91,10 @@ class AioComponents(object):
 
         unique_first_letter_url_list = __manage_the_first_letter_url_list(first_letter_url_list)
         # size_control_test, temporarily, step 2
-        unique_first_letter_url_list = unique_first_letter_url_list[0:1]
+        # wanna make it full, then annotate this line below, param settings
+
+        # unique_first_letter_url_list = unique_first_letter_url_list[0:1]
+
         # if only single url, then do the check
         if not isinstance(unique_first_letter_url_list, list):
             cache_list = list()
@@ -156,10 +159,10 @@ class AioComponents(object):
                     # set the path to storage the data, like: ../data/gutenburg/
                     # storage_path = "../Data/gutenburg/"
                     storage_path = self.storage_path
-                    async with aiofiles.AIOFile(
+                    async with aiofile.AIOFile(
                             "".join([storage_path, item.split("/")[-1].split(".")[0], ".txt"]), 'w'
                     ) as afp:
-                        writer = aiofiles.Writer(afp)
+                        writer = aiofile.Writer(afp)
                         # reader = Reader(afp, chunk_size=8)
                         result = await response.text()
                         await writer(self._get_story(result))

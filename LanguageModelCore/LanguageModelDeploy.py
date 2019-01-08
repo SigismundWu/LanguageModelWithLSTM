@@ -83,5 +83,4 @@ if __name__ == "__main__":
     print(nest_list)
     final_data_frame = pd.DataFrame(nest_list)
     final_data_frame = final_data_frame.sort_values(by=2, ascending=True)
-    print(final_data_frame)
-    print(final_data_frame[1][0])
+    final_data_frame.to_csv("../Data/results/low_data_trained/final_results.csv", encoding="utf-8")
