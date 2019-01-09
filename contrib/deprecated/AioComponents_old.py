@@ -18,12 +18,9 @@ class AioComponents(object):
             'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
         }
         # Depends on which kind of first-letter-urls you want to download
+        self.download_list = ["a", "b", "c", "d", "e"]
+        self.sub_urls_pattern = 'ebooks.*\d{3,9}.*\.html'
         self.storage_path = "../Data/gutenburg/"
-        self.main_origin_urls = [
-            "http://gutenberg.net.au/plusfifty-a-m.html",
-            "http://gutenberg.net.au/plusfifty-n-z.html"
-        ]
-        self.download_size_control = 0
 
     # async parts
     async def __fetch(self, session, url):
@@ -31,40 +28,83 @@ class AioComponents(object):
             print("fetched an url:", url)
             return await response.text()
 
+    async def _get_urls(self, url):
+        # initial the ClientSession Class as session
+        async with aiohttp.ClientSession() as session:
+            response_html = await self.__fetch(session, url)
+            soup_object = BeautifulSoup(response_html)
+            # sleep for 2 secs for each html to protect the server
+            await asyncio.sleep(2)
+            links = soup_object.find_all('a', href=re.compile('#'))
+            # get the websites list
+            websites = [
+                parse.urljoin('http://gutenberg.net.au/index.html', item.get('href')) for item in links
+            ]
+            websites_list = list(set(websites))
+
+            return websites_list
+
     async def _get_sub_urls(self, item):
         # init the links, avoiding the unassinged issues
         links = list()
         try:
             async with aiohttp.ClientSession() as session:
                 response_html = await self.__fetch(session, item)
-                print(item)
                 await asyncio.sleep(2)
-                soup_objcet = BeautifulSoup(response_html, "html.parser")
+                soup_objcet = BeautifulSoup(response_html)
                 # compile and find the rules of websites by regex
-                tags_with_href = soup_objcet.find_all('a')
-                tags_have_html = list()
-                for index, tag in enumerate(tags_with_href):
-                    if tag.string is not None:
-                        if "HTML" in tag.string:
-                            print(tag)
-                            tags_have_html.append("http://gutenberg.net.au" + tags_with_href[index]["href"])
-                links.append(tags_have_html)
+                res = soup_objcet.find_all('a', href=re.compile(self.sub_urls_pattern))
+                links = [
+                    parse.urljoin(item, unt.get('href')) for unt in res
+                ]
         except Exception as e:
             logging.exception(e)
 
-        print(links)
-        return links
+        return list(set(links))
 
     def _build_url_lists(self):
+        # The lists decides which of the first_lettered articles would be downloaded
+        first_letter_list = self.download_list
+        # Get the url from the main page, statically have the gutengbery.net url rules down below as shown
+        tasks_get_first_letter_links = [
+            self._get_urls("".join(['http://gutenberg.net.au/titles-', url, '.html'])) for url in first_letter_list
+        ]
+        loop_get_first_letter = asyncio.get_event_loop()
+        # The arg for gather must be passed as a discomposed struct
+        first_letter_url_list = loop_get_first_letter.run_until_complete(
+            asyncio.gather(*tasks_get_first_letter_links)
+        )
+        loop_get_first_letter.close()
         # Get the set-result of the urls that you need
         # each first letter has its own list in the larger list
 
+        # process the first_letter_url_list to make it unique
+        def __manage_the_first_letter_url_list(lst):
+            managed_lst = list()
+            for index in range(len(lst)):
+                cache = lst.pop()
+                managed_lst.extend(cache)
+            # drop the duplications with set func
+            managed_lst_set = set(managed_lst)
+            managed_lst = list(managed_lst_set)
+
+            return managed_lst
+
+        unique_first_letter_url_list = __manage_the_first_letter_url_list(first_letter_url_list)
+        # size_control_test, temporarily, step 2
+        # wanna make it full, then annotate this line below, param settings
+
+        print(len(first_letter_url_list))
         # unique_first_letter_url_list = unique_first_letter_url_list[0:10]
 
         # if only single url, then do the check
-        main_task_list = self.main_origin_urls
+        if not isinstance(unique_first_letter_url_list, list):
+            cache_list = list()
+            cache_list.append(unique_first_letter_url_list)
+            unique_first_letter_url_list = cache_list
+
         tasks_get_hyper_links = [
-            self._get_sub_urls(url) for url in main_task_list
+            self._get_sub_urls(url) for url in unique_first_letter_url_list
         ]
         # start the get_sub-urls_loop, bring a new one, with new_event_loop and set it global with set_event_loop
         loop_get_suburls = asyncio.new_event_loop()
