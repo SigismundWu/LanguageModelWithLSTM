@@ -15,7 +15,7 @@ class WebRobotControlCore(AioComponents):
         # and this links' sub-links would be crawled with multi-processing
         self.all_text_url_list = self._build_url_lists()
         # set the nums of articles that you need, multiprocessed, so your demands // 2
-        self.start_label = 1400
+        self.start_label = 1300
         self.end_label = 1500
 
     def get_all_text(self, func_mode) -> list:

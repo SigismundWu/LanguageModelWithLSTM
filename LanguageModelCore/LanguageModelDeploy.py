@@ -60,7 +60,7 @@ class LanguageModelDeploy(object):
         model_ready.train_the_model()
         # if trained with cuda, save it with a name with cuda, else, without cuda, common version
         # torch.save(model_ready, '../configs/trained_model/trained_model_with_cuda.pth')
-        torch.save(model_ready, '../configs/trained_model/trained_model.pth')
+        torch.save(model_ready, '../configs/trained_model/trained_model_full.pth')
 
         return model_ready
 
@@ -79,8 +79,8 @@ class LanguageModelDeploy(object):
 
 if __name__ == "__main__":
     model_ready = LanguageModelDeploy()
-    nest_list = model_ready.predict_the_probability('../configs/trained_model/trained_model.pth')
+    nest_list = model_ready.predict_the_probability()
     print(nest_list)
     final_data_frame = pd.DataFrame(nest_list)
     final_data_frame = final_data_frame.sort_values(by=2, ascending=True)
-    final_data_frame.to_csv("../Data/results/low_data_trained/final_results.csv", encoding="utf-8")
+    final_data_frame.to_csv("../Data/results/normal/final_results.csv", encoding="utf-8")
